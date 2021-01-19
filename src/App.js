@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import React,{useState,useEffect} from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from 'react-router-dom';
+
+import Login from './pages/login/login.js';
+import Form from './components/form/form.js'
+import Home from './pages/home/home.js'
 import './App.css';
 
 function App() {
+  const [sign,setSign]=useState(true);
+  
+  const history=useHistory()
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <link to="/">
+      </link>
+      <link to="/login"></link>
+      <link to="/sign"></link>
+      <link to="/home"></link>
+      <Switch>
+        <Route exact path="/">
+          <Login listenSign={(e)=>{e?history.push('/sign'):history.push('/login')}}></Login>
+        </Route>
+        <Route path="/sign">
+          <Form title="Welcome to create account " state="注册"></Form>
+        </Route>
+        <Route path="/login">
+          <Form title="Welcome back" state="登录"></Form>
+        </Route>
+        <Route path="/home">
+          <Home></Home>
+        </Route>
+      </Switch>
+   </>
   );
 }
 
