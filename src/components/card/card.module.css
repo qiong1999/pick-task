@@ -1,0 +1,33 @@
+.card{
+    position:relative;
+    display:inline-block;
+    width:180px;
+    height:100px;
+    line-height:100px;
+    font-size:20px;
+    font-weight:bolder;
+    padding:10px;
+    margin:10px;
+    color:#fff;
+    border-radius:10px;
+}
+.new{
+    position:relative;
+    display:inline-block;
+    width:180px;
+    height:100px;
+    text-align:center;
+    line-height:100px;
+    padding:10px;
+    font-size:20px;
+    font-weight:bolder;
+    color:rgb(78, 78, 78);
+    background:rgba(37, 49, 3, 0.1);
+    margin:10px;
+    border-radius:10px;
+}
+.start{
+    position:absolute;
+    bottom:0px;
+    right:10px;
+}

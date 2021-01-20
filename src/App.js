@@ -10,6 +10,7 @@ import {
 import Login from './pages/login/login.js';
 import Form from './components/form/form.js'
 import Home from './pages/home/home.js'
+import Task from './pages/task/task.js'
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <link to="/login"></link>
       <link to="/sign"></link>
       <link to="/home"></link>
+      <link to="/task"></link>
       <Switch>
         <Route exact path="/">
           <Login listenSign={(e)=>{e?history.push('/sign'):history.push('/login')}}></Login>
@@ -36,6 +38,9 @@ function App() {
         </Route>
         <Route path="/home">
           <Home></Home>
+        </Route>
+        <Route>
+          <Task></Task>
         </Route>
       </Switch>
    </>
