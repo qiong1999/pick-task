@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './card.module.css'
 
-function Card({title,start, color,type}){
+function Card({title,start, color,type,children}){
     if(type==="new"){
         return(
             <div className={styles.new}>
@@ -12,7 +12,10 @@ function Card({title,start, color,type}){
     else if(type==='list'){
         return(
             <div className={styles.list}>
-                {title}
+                <div>{children}</div>
+                <div className={styles.edit}></div>
+                <div className={styles.finish}></div>
+                <div className={styles.image}>image</div>
             </div>
         )
         

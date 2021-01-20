@@ -22,7 +22,7 @@
     font-size:20px;
     font-weight:bolder;
     color:rgb(78, 78, 78);
-    background:rgba(37, 49, 3, 0.1);
+    background:rgba(166, 180, 127, 0.3);
     margin:10px;
     border-radius:10px;
 }
@@ -30,4 +30,51 @@
     position:absolute;
     bottom:0px;
     right:10px;
+}
+.list{
+    position:relative;
+ 
+    margin:10px;
+    border-radius:5px;
+    min-height:50px;
+    text-align:left;
+    padding:10px 20px 30px 20px;
+    background:#fff;
+    font-weight:lighter;
+}
+.image{
+    position:absolute;
+    right:20px;
+    bottom:10px;
+}
+.edit{
+    position:absolute;
+    top:10px;
+    right:30px;
+    width:30px;
+    height:30px;
+   
+   
+
+}
+.edit:hover{
+    background-image:url('edit.png');
+    background-size:20px;
+    background-repeat:no-repeat;
+    background-position:center;
+   
+}
+.finish{
+    position:absolute;
+    top:10px;
+    right:0px;
+    width:30px;
+    height:30px;
+    
+}
+.finish:hover{
+    background-image:url('finish.png');
+    background-size:20px;
+    background-repeat:no-repeat;
+    background-position:center;
 }

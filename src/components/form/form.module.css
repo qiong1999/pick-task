@@ -17,7 +17,7 @@ input {
   padding-left: 100px;
   border-right: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  background: #f1ee1c;
+  background:  #c8e90c;;
   border-bottom-right-radius: 49%;
   font-size: 35px;
 }
@@ -40,7 +40,7 @@ input {
 }
 .username,
 .password {
-  border-bottom: 3px solid #f1ee1c;
+  border-bottom: 3px solid  #c8e90c;;
   margin-top: 30px;
   height: 30px;
   width: 300px;
@@ -55,7 +55,7 @@ input {
   font-size:15px;
 }
 .btn:focus{
-    background:#f1ee1c;
+    background: #c8e90c;;
     border:none;
     color:#fff;
 }

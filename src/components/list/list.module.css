@@ -1,17 +1,64 @@
-.list{
-    display:inline-block;
-    position:relative;
-    margin:20px;
-    width:400px;
-    min-height:100px;
-    text-align:center;
-    font-size:15px;
-    font-weight:bolder;
-    background:#f0f0f0;
+.list {
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+  min-width: 350px;
+  border-radius: 5px;
+  vertical-align: top;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bolder;
+  background: rgba(166, 180, 127, 0.3);
 }
-.choose{
-    position:absolute;
-    top:10px;
-    right:10px;
+.header {
+  height: 30px;
+  line-height: 30px;
+}
+.choose {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  width: 30px;
+  height: 20px;
+  background-image: url("more.png");
+  background-size: 30px;
+}
+.choose:hover {
+  background-image: url("moreB.png");
+}
+.bodyer::-webkit-scrollbar {
+  width: 0 !important;
+}
+.bodyer {
+  max-height: 450px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  margin-top: 10px;
+  margin-bottom: 70px;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  height: 50px;
+  line-height: 50px;
+  color: #aaa9a9;
+  font-weight: lighter;
+}
 
+.addBtn {
+  margin: 0px 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  padding-left: 40px;
+  background-image: url("add.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 20px;
+  border-radius: 5px;
+}
+.addBtn:hover {
+  background-color: rgb(228, 227, 227, 0.3);
 }
