@@ -31,21 +31,24 @@
     bottom:0px;
     right:10px;
 }
+
 .list{
+    margin-bottom:10px;
     position:relative;
- 
-    margin:10px;
     border-radius:5px;
-    min-height:50px;
+    height:50px;
+    width:270px;
     text-align:left;
     padding:10px 20px 30px 20px;
     background:#fff;
     font-weight:lighter;
+    
 }
 .image{
     position:absolute;
     right:20px;
     bottom:10px;
+    pointer-events:none;
 }
 .edit{
     position:absolute;
@@ -53,26 +56,31 @@
     right:30px;
     width:30px;
     height:30px;
-   
+    pointer-events: none;
    
 
 }
-.edit:hover{
+.list:hover .edit {
     background-image:url('edit.png');
     background-size:20px;
     background-repeat:no-repeat;
     background-position:center;
    
 }
+
 .finish{
     position:absolute;
     top:10px;
     right:0px;
     width:30px;
     height:30px;
+    pointer-events: none;
     
 }
-.finish:hover{
+.cont{
+    pointer-events:none;
+}
+.list:hover .finish{
     background-image:url('finish.png');
     background-size:20px;
     background-repeat:no-repeat;

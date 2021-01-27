@@ -1,4 +1,5 @@
 function ajax(options) {
+ 
   //创建ajax对象
   let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   let xhr = new XMLHttpRequest();

@@ -13,6 +13,7 @@
 .header {
   height: 30px;
   line-height: 30px;
+  pointer-events:none;
 }
 .choose {
   position: absolute;
@@ -30,6 +31,10 @@
   width: 0 !important;
 }
 .bodyer {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   max-height: 450px;
   overflow-y: scroll;
   -ms-overflow-style: none;
