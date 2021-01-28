@@ -52,9 +52,11 @@ function App() {
           "Content-Type":"application/json"
         },
         success:function(data){
-         const result = JSON.stringify(data);
+         const result = JSON.parse(data);
+         //console.log(result)
          if(result.success){
-         
+           localStorage.setItem("token",result.token)
+          // const token = localStorage.getItem("token")
            history.push('/home')
          }
         },

@@ -14,7 +14,7 @@ function Card({ title, start, color, type, children, id, style }) {
         <div className ={styles.cont}>{children}</div>
         <div className={styles.edit} ></div>
         <div className={styles.finish}></div>
-        <div className={styles.image} ondragstart = "return false">image</div>
+        <div className={styles.image} >image</div>
       </div>
     );
   } else {

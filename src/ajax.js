@@ -1,5 +1,11 @@
-function ajax(options) {
- 
+function ajax(
+  options = {
+    type: "get",
+    url: "",
+    data: {},
+    header: { "Content-Type": "application", Authorization: "" },
+  }
+) {
   //创建ajax对象
   let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   let xhr = new XMLHttpRequest();
@@ -17,18 +23,18 @@ function ajax(options) {
   }
   //配置ajax对象
   xhr.open(options.type, options.url);
+  xhr.setRequestHeader("Authorization", options.header["Authorization"]);
   if (options.type === "post") {
-      let contentType = options.header['Content-Type']
-      //设置请求类型格式
-      //console.log(contentType)
-      xhr.setRequestHeader('Content-Type',contentType);
-      if(contentType ==='application/json'){
-          //console.log("yes",options.data)
-          xhr.send(JSON.stringify(options.data))
-      }else{
-        xhr.send(params);
-      }
-    
+    let contentType = options.header["Content-Type"];
+    //设置请求类型格式
+    //console.log(contentType)
+    xhr.setRequestHeader("Content-Type", contentType);
+    if (contentType === "application/json") {
+      //console.log("yes",options.data)
+      xhr.send(JSON.stringify(options.data));
+    } else {
+      xhr.send(params);
+    }
   } else {
     //发送请求
     xhr.send();
@@ -37,11 +43,12 @@ function ajax(options) {
   //监听xhr对象下面的onload事件
   //当xhr对象接收完响应数据后触发
   xhr.onload = function () {
-   if(xhr.status=== 200){
-       options.success(xhr.responseText);
-   }else{
-       options.error(xhr.responseText,xhr)
-   }
+    console.log(xhr.status)
+    if (xhr.status === 200) {
+      options.success(xhr.responseText);
+    } else {
+      options.error(xhr.responseText, xhr);
+    }
   };
 }
 export default ajax;

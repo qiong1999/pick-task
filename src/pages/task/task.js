@@ -21,7 +21,7 @@ function Task() {
   const todo = list.map((item) => {
     if (item.state === "todo") {
       return (
-        <Card type="list" id={item.id}>
+        <Card type="list" id={item.id} >
           {item.content}
         </Card>
       );

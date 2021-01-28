@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./home.module.css";
-import classNames from "classnames";
+import ajax from '../../ajax.js'
 
 import Card from "../../components/card/card.js";
 
 function Home() {
+
+  console.log(`Bearer ${localStorage.getItem('token')}`)
+  useEffect(()=>{
+    ajax({
+      type:'post',
+      url:"http://localhost:3004/home",
+      data:{test:1},
+      header:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${localStorage.getItem('token')}`
+      },
+      success:function(data){
+        console.log(data);
+      },
+      error:function(data){
+
+      }
+    })
+
+  },[])
   const [active, setActive] = useState("board");
   return (
     <div className={styles.container}>
