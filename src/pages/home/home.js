@@ -1,11 +1,23 @@
 import React, { useState,useEffect } from "react";
+import  {useHistory} from 'react-router-dom'; 
 import styles from "./home.module.css";
 import ajax from '../../ajax.js'
 
 import Card from "../../components/card/card.js";
 
-function Home() {
+const list = [
+  {id:"1",title:"learn"},
+  {id:"12",title:"learn1"},
+  {id:"13",title:"learn3"},
+  {id:"14",title:"learn4"},
+]
 
+
+function Home() {
+  const history = useHistory()
+  const cardList = list.map(item=>{
+    return<Card id={item.id} color={{ backgroundColor: "rgb(175, 233, 18)" }} title={item.title} handleClick={(e)=>{history.push("/task")}}></Card>
+  })
   console.log(`Bearer ${localStorage.getItem('token')}`)
   useEffect(()=>{
     ajax({
@@ -55,36 +67,11 @@ function Home() {
           </div>
         </div>
         <div className={styles.main}>
-          <div className={styles.part1}>
-            <div>最近查看</div>
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>
-          </div>
+         
           <div className={styles.part2}>
             <div>个人看板</div>
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>{" "}
-            <Card
-              title="hello"
-              color={{ backgroundColor: "rgb(175, 233, 18)" }}
-            ></Card>
-            <Card type="new" title="新建"></Card>
+            {cardList}
+            <Card type="new" title="新建" handleClick={(e)=>{console.log("h",e)}}></Card>
           </div>
         </div>
       </div>

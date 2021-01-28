@@ -118,7 +118,7 @@ function Task() {
           curNode.current = null;
         }}
       >
-        <List title="todo">{todo}</List>
+        <List title="todo" >{todo}</List>
         <List title="done">{done}</List>
         <List title="undone">{undone}</List>
         <div className={styles.addList}>添加新的列表</div>
