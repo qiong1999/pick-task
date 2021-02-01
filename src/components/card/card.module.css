@@ -44,7 +44,8 @@
     padding:10px 20px 30px 20px;
     background:#fff;
     font-weight:lighter;
-    border:1px solid black;
+    border:1px solid rgb(190, 190, 190);
+    box-shadow:1px 1px 1px rgb(190, 190, 190);
     
 }
 .image{

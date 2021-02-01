@@ -1,10 +1,8 @@
-import React, { useEffect, useRef,useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function WithMouse(WrappedComponent) {
-
- 
   const divNode = useRef(null);
-  const [dragStatus,setDrag ]= useState({
+  const [dragStatus, setDrag] = useState({
     position: "static",
     draging: false,
     mouseDown: false,
@@ -14,41 +12,38 @@ function WithMouse(WrappedComponent) {
     moveY: 0,
   });
   useEffect(() => {
-   
-    let style 
-    
+    let style;
+
     if (dragStatus.mouseDown) {
-        style = `
-        background-color:yellow;
+      style = `
+      
         position:${dragStatus.position};
         top:${dragStatus.moveY}px;
         left:${dragStatus.moveX}px;
         z-index:10000;
         `;
-      
-    }else if(divNode.current){
-        style = `
-        background-color:yellow;
+    } else if (divNode.current) {
+      style = `
+     
         position:${dragStatus.position};
         top:${divNode.current.getClientRects()[0].top}px;
         left:${divNode.current.getClientRects()[0].left}px;
-        `
+        `;
     }
-    if(divNode.current){
-        divNode.current.setAttribute('style',style)
+    if (divNode.current) {
+      divNode.current.setAttribute("style", style);
     }
-   
   }, [dragStatus]);
   return (props) => {
     return (
       <div
         ref={divNode}
         onMouseDown={(e) => {
-           setDrag({
+          setDrag({
             ...dragStatus,
             mouseDown: true,
-            startX: e.clientX -divNode.current.getClientRects()[0].left,
-            startY: e.clientY -divNode.current.getClientRects()[0].top,
+            startX: e.clientX - divNode.current.getClientRects()[0].left,
+            startY: e.clientY - divNode.current.getClientRects()[0].top,
           });
           // console.log(dragStatus.current);
         }}
@@ -68,8 +63,9 @@ function WithMouse(WrappedComponent) {
             ...dragStatus,
             draging: false,
             mouseDown: false,
+            position: "static",
           });
-          return "done"
+          return "done";
         }}
       >
         <WrappedComponent {...props}></WrappedComponent>

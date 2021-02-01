@@ -10,6 +10,7 @@ const Card = (props) => {
     children,
     id,
     style,
+    content,
     handleClick = (e) => {},
   } = props;
   if (type === "new") {
@@ -29,11 +30,16 @@ const Card = (props) => {
       <div
         id={id}
         className={styles.list}
-        onClick={(e) => {
-          handleClick(e);
+        onMouseUp={(e) => {
+          const message ={
+            id:id,
+            x:e.target.getClientRects()[0].left,
+            y:e.target.getClientRects()[0].top,
+          }
+          handleClick(message);
         }}
       >
-        <div className={styles.cont}>{children}</div>
+        {content}
         <div className={styles.edit} onClick={(e)=>{console.log("dianji")}}></div>
         <div className={styles.finish}></div>
         <div className={styles.image}>image</div>
