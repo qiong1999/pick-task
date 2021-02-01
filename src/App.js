@@ -18,6 +18,7 @@ function App() {
   
   const [user,setUser] = useState({});
   const [login,setLogin] = useState({});
+  const [board,setBoard] = useState({})
   useEffect(()=>{
    if(user.username&&user.password){
     ajax({
@@ -88,10 +89,10 @@ function App() {
           <Form title="Welcome back" state="登录" handleClick={(e)=>{setLogin({username:md5(e.username),password:md5(e.password)})}}></Form>
         </Route>
         <Route path="/home">
-          <Home></Home>
+          <Home jump={(e)=>{setBoard(e)}}></Home>
         </Route>
         <Route>
-          <Task></Task>
+          <Task board={board}></Task>
         </Route>
       </Switch>
    </>
