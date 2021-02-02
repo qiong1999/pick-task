@@ -1,5 +1,5 @@
 import React from "react";
-
+import Menu from '../newMenu/menu'
 import styles from "./list.module.css";
 
 const List = (props) => {
@@ -19,9 +19,10 @@ const List = (props) => {
       <div className={styles.footer}>
         <div>
           <div className={styles.add}></div>
-          <div className={styles.addBtn}>"添加新的任务卡片"</div>
+          <div className={styles.addBtn} onClick={(e)=>{handleAdd(e)}}>"添加新的任务卡片"</div>
         </div>
       </div>
+      <Menu handleClick={(e)=>{console.log(e)}}></Menu>
     </div>
   );
 };

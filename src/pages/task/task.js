@@ -4,14 +4,13 @@ import List from "../../components/list/list.js";
 import styles from "./task.module.css";
 import Card from "../../components/card/card.js";
 import WithMouse from "../../components/higherOrder/withMouse";
-import Calendar from "../../components/calendar/calendar.js"
+import Calendar from "../../components/calendar/calendar.js";
+
 function Task(props) {
+  console.log("props.board", props.board);
   const [cardItem, setItem] = useState({});
   const taskNode = useRef(null);
-  const [list, setList] = useState([
-    { id: "1", content: "hello", state: "todo" },
-    { id: "hi", content: "hello1", state: "todo" },
-  ]);
+  const [list, setList] = useState([{ id: "", content: "he", state: "todo" }]);
 
   const todo = list.map((item) => {
     if (item.state === "todo") {
@@ -95,11 +94,21 @@ function Task(props) {
         <input type="tFFext" className={styles.search} placeholder="搜索" />
       </div>
       <div id="bodyer" className={styles.bodyer}>
-        <List title="todo">{todo}</List>
+        <List
+          title="todo"
+          handleAdd={(e) => {
+            console.log("dianji");
+            let temp = list;
+            temp.push({id:"hi",content:"",state:'todo'})
+           // console.log(...temp)
+            setList([{id:"hi",content:"",state:'todo'},{id:"hdai",content:"",state:'todo'}])
+          }}
+        >
+          {todo}
+        </List>
         <List title="done">{done}</List>
         <List title="undone">{undone}</List>
       </div>
-      <Calendar></Calendar>
     </div>
   );
 }

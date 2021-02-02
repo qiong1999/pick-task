@@ -6,11 +6,7 @@ import ajax from "../../ajax.js";
 import Menu from "../../components/newMenu/menu.js";
 import Card from "../../components/card/card.js";
 
-const list = [
-  { id: "1", title: "learn" },
-  { id: "12", title: "learn1" },
-  { id: "13", title: "learn3" },
-];
+
 
 function Home(props) {
   const history = useHistory();
