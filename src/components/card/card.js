@@ -40,9 +40,9 @@ const Card = (props) => {
         }}
       >
         {content}
-        <div className={styles.edit} onClick={(e)=>{console.log("dianji")}}></div>
-        <div className={styles.finish}></div>
-        <div className={styles.image}>image</div>
+        <div className={styles.edit} onClick={(e)=>{console.log("编辑")}}></div>
+        <div className={styles.finish}onClick={(e)=>{console.log("完成")}}></div>
+        <div className={styles.image}onClick={(e)=>{console.log("头像")}}>image</div>
       </div>
     );
   } else {

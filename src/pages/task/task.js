@@ -4,6 +4,7 @@ import List from "../../components/list/list.js";
 import styles from "./task.module.css";
 import Card from "../../components/card/card.js";
 import WithMouse from "../../components/higherOrder/withMouse";
+import Calendar from "../../components/calendar/calendar.js"
 function Task(props) {
   const [cardItem, setItem] = useState({});
   const taskNode = useRef(null);
@@ -54,12 +55,10 @@ function Task(props) {
 
     if (taskNode.current) {
       width = taskNode.current.getClientRects()[0].width / 3.0;
-      console.log("width", width);
     }
 
     let listChange = list.map((item) => {
       if (item.id === cardItem.id) {
-        console.log(cardItem.x, "wind", width);
         if (cardItem.x < width) {
           item.state = "todo";
         } else if (cardItem.x < width * 2) {
@@ -100,6 +99,7 @@ function Task(props) {
         <List title="done">{done}</List>
         <List title="undone">{undone}</List>
       </div>
+      <Calendar></Calendar>
     </div>
   );
 }

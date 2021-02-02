@@ -1,0 +1,38 @@
+.container {
+    position:absolute;
+    top:100px;
+    left:500px;
+    width: 490px;
+    background: pink;
+    padding:5px 0px 10px;
+    user-select:none;
+  }
+  .inpt{
+      width:100px;
+      height:30px;
+      border:1px solid black;
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: yellow;
+  }
+  .bodyer {
+    background: red;
+    display: flex;
+    flex-wrap:wrap;
+   
+  }
+  .oneDay {
+    width: 70px;
+    background: pink;
+    text-align: center;
+    
+  }
+  
+  .afterDay,.frontDay{
+    width:70px;
+    background:rgb(206, 204, 204);
+    text-align:center;
+  }
