@@ -35,6 +35,8 @@ function WithMouse(WrappedComponent) {
     }
   }, [dragStatus]);
   return (props) => {
+
+    
     return (
       <div
         ref={divNode}

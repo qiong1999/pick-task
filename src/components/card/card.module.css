@@ -33,9 +33,11 @@
     bottom:0px;
     right:10px;
 }
-
+.total{
+    position:relative;
+}
 .list{
-    margin-bottom:10px;
+    margin-top:10px;
     position:relative;
     border-radius:5px;
     height:50px;
@@ -52,7 +54,13 @@
     position:absolute;
     right:20px;
     bottom:10px;
+    width:70px;
+    padding-left:5px;
    
+   
+}
+.image:hover{
+  
 }
 .edit{
     position:absolute;
@@ -81,9 +89,7 @@
     
     
 }
-.cont{
-   
-}
+ 
 .list:hover .finish{
     background-image:url('finish.png');
     background-size:20px;

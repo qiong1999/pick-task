@@ -7,51 +7,45 @@ import WithMouse from "../../components/higherOrder/withMouse";
 import Calendar from "../../components/calendar/calendar.js";
 
 function Task(props) {
-  console.log("props.board", props.board);
+  // console.log("props.board", props.board);
   const [cardItem, setItem] = useState({});
   const taskNode = useRef(null);
   const [list, setList] = useState([{ id: "", content: "he", state: "todo" }]);
 
+  /*const todo = list.map((item) => {
+    if (item.state === "todo") {
+      return (
+        <WithMouse>
+          <Card
+            type="list"
+            id={item.id}
+            content={item.content}
+            handleClick={(e) => {
+              console.log(e);
+              setItem(e);
+            }}
+          ></Card>
+        </WithMouse>
+      );
+    }
+  });*/
   const todo = list.map((item) => {
     if (item.state === "todo") {
-      return WithMouse(Card)({
-        type: "list",
-        content: item.content,
-        id: item.id,
-        handleClick: (e) => {
-          setItem(e);
-        },
-      });
+      return <Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log("e",e);setItem(e)}}></Card>
     }
   });
-
   const done = list.map((item) => {
     if (item.state === "done") {
-      return WithMouse(Card)({
-        type: "list",
-        content: item.content,
-        id: item.id,
-        handleClick: (e) => {
-          setItem(e);
-        },
-      });
+      return<Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log(e);setItem(e)}}></Card>
     }
   });
   const undone = list.map((item) => {
     if (item.state === "undone") {
-      return WithMouse(Card)({
-        type: "list",
-        content: item.content,
-        id: item.id,
-        handleClick: (e) => {
-          setItem(e);
-        },
-      });
+      return<Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log(e);setItem(e)}}></Card>
     }
   });
   useEffect(() => {
     let width;
-
     if (taskNode.current) {
       width = taskNode.current.getClientRects()[0].width / 3.0;
     }
@@ -97,17 +91,18 @@ function Task(props) {
         <List
           title="todo"
           handleAdd={(e) => {
-            console.log("dianji");
+            //console.log("dianji");
             let temp = list;
-            temp.push({id:"hi",content:"",state:'todo'})
-           // console.log(...temp)
-            setList([{id:"hi",content:"",state:'todo'},{id:"hdai",content:"",state:'todo'}])
+            temp.push({ id: "hi", content: "", state: "todo" });
+            // console.log(...temp)
+            setList([...temp]);
           }}
         >
           {todo}
         </List>
         <List title="done">{done}</List>
         <List title="undone">{undone}</List>
+        
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const List = (props) => {
           <div className={styles.addBtn} onClick={(e)=>{handleAdd(e)}}>"添加新的任务卡片"</div>
         </div>
       </div>
-      <Menu handleClick={(e)=>{console.log(e)}}></Menu>
+     
     </div>
   );
 };

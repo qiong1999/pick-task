@@ -96,16 +96,16 @@ function Calendar() {
     }
   }, [nowDate]);
   return (
-    <div className={styles.container}>
-      <input className={styles.inpt} type="text"></input>
+    <div className={styles.container} onClick={(e)=>{console.log("hello")}}>
+      
       <div className={styles.header}>
-        <div>箭头</div>
-        <div>箭头</div>
+        <div className={styles.sm2}></div>
+        <div className={styles.sm1}></div>
         <div>
           {nowDate.Year}年{nowDate.Month}月{nowDate.Date}日
         </div>
-        <div>箭头</div>
-        <div>箭头</div>
+        <div className = {styles.bg1}></div>
+        <div className = {styles.bg2}></div>
       </div>
       <div className={styles.bodyer}>
         {dayList}

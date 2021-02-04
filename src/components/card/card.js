@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./card.module.css";
+import Calendar from "../calendar/calendar"
 
 const Card = (props) => {
   const {
@@ -27,6 +28,7 @@ const Card = (props) => {
     );
   } else if (type === "list") {
     return (
+      <div className={styles.total}>
       <div
         id={id}
         className={styles.list}
@@ -42,7 +44,9 @@ const Card = (props) => {
         {content}
         <div className={styles.edit} onClick={(e)=>{console.log("编辑")}}></div>
         <div className={styles.finish}onClick={(e)=>{console.log("完成")}}></div>
-        <div className={styles.image}onClick={(e)=>{console.log("头像")}}>image</div>
+        <input className={styles.image}onClick={(e)=>{console.log("头像")}} placeholder="2020.01.01"/> 
+      </div>
+      <Calendar></Calendar>
       </div>
     );
   } else {
