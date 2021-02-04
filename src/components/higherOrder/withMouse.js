@@ -67,7 +67,8 @@ function WithMouse(WrappedComponent) {
             mouseDown: false,
             position: "static",
           });
-          return "done";
+          props.handleClick({x:e.target.getClientRects()[0].left,y:e.target.getClientRects()[0].top,id:e.target.id})
+        
         }}
       >
         <WrappedComponent {...props}></WrappedComponent>

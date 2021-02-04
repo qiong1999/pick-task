@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./calendar.module.css";
-function Calendar() {
+function Calendar({handleSetTime,display}) {
   const [nowDate, setDate] = useState({
     Month: 0,
     Year: 0,
@@ -67,18 +67,18 @@ function Calendar() {
   const list = (nowDate) => {
     let result = new Array(42);
     let monthDay = getMonthDay(nowDate.Month);
-    let frontMonth = nowDate.Month === 1 ? 12 : getMonthDay(nowDate.Month - 1);
+    let frontMonth = nowDate.Month === 1 ? getMonthDay(12) : getMonthDay(nowDate.Month - 1);
     let day = getOneDay(nowDate.Year, nowDate.Month, 1);
     for (let i = 0; i < 42; i++) {
       if (i >= day && i - day < monthDay) {
-        result[i] = <div className={styles.oneDay}>{date[i - day]}</div>;
+        result[i] = <div className={styles.oneDay} id={`${nowDate.Year}-${nowDate.Month}-${date[i-day]}`}>{date[i - day]}</div>;
       } else if (i - day < 0) {
         result[i] = (
-          <div className={styles.frontDay}>{frontMonth + i - day + 1}</div>
+          <div className={styles.frontDay} id={`${nowDate.Month===1?nowDate.Year-1:nowDate.Year}-${nowDate.Month===1?12:nowDate.Month-1}-${frontMonth + i - day + 1}`}>{frontMonth + i - day + 1}</div>
         );
       } else {
         result[i] = (
-          <div className={styles.afterDay}>{(i - day + 1) % monthDay}</div>
+          <div className={styles.afterDay}id={`${nowDate.Month ===12?nowDate.Year+1:nowDate.Year}-${nowDate.Month===12?1:nowDate.Month+1}-${(i - day + 1) % monthDay}`}>{(i - day + 1) % monthDay}</div>
         );
       }
     }
@@ -96,7 +96,7 @@ function Calendar() {
     }
   }, [nowDate]);
   return (
-    <div className={styles.container} onClick={(e)=>{console.log("hello")}}>
+    <div className={styles.container} style={{display:display?"block":"none"}}onClick={(e)=>{handleSetTime(e.target.id)}}>
       
       <div className={styles.header}>
         <div className={styles.sm2}></div>

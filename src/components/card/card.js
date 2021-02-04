@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./card.module.css";
-import Calendar from "../calendar/calendar"
+import Calendar from "../calendar/calendar";
 
 const Card = (props) => {
   const {
@@ -14,6 +14,10 @@ const Card = (props) => {
     content,
     handleClick = (e) => {},
   } = props;
+  const [time, setTime] = useState("");
+  const [dis, setDis] = useState(false);
+
+  const timeFormat = (str) => {};
   if (type === "new") {
     return (
       <div
@@ -29,24 +33,40 @@ const Card = (props) => {
   } else if (type === "list") {
     return (
       <div className={styles.total}>
-      <div
-        id={id}
-        className={styles.list}
-        onMouseUp={(e) => {
-          const message ={
-            id:id,
-            x:e.target.getClientRects()[0].left,
-            y:e.target.getClientRects()[0].top,
-          }
-          handleClick(message);
-        }}
-      >
-        {content}
-        <div className={styles.edit} onClick={(e)=>{console.log("编辑")}}></div>
-        <div className={styles.finish}onClick={(e)=>{console.log("完成")}}></div>
-        <input className={styles.image}onClick={(e)=>{console.log("头像")}} placeholder="2020.01.01"/> 
-      </div>
-      <Calendar></Calendar>
+        <div
+          id={id}
+          className={styles.list}
+         
+        >
+          {content}
+          <div
+            className={styles.edit}
+            onClick={(e) => {
+              console.log("编辑");
+            }}
+          ></div>
+          <div
+            className={styles.finish}
+            onClick={(e) => {
+              console.log("完成");
+            }}
+          ></div>
+          <input
+            className={styles.image}
+            onClick={(e) => {
+              console.log("头像");
+              setDis(!dis);
+            }}
+            placeholder={time}
+          />
+        </div>
+        <Calendar
+          handleSetTime={(e) => {
+            handleClick(e);
+            setTime(e);
+          }}
+          display={dis}
+        ></Calendar>
       </div>
     );
   } else {
