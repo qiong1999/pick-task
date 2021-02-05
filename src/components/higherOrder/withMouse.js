@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState,} from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-function WithMouse({children,handleClick=()=>{}}) {
+function WithMouse({ children, handleClick = () => {} }) {
   const divNode = useRef(null);
   const [dragStatus, setDrag] = useState({
     position: "static",
@@ -34,44 +34,52 @@ function WithMouse({children,handleClick=()=>{}}) {
       divNode.current.setAttribute("style", style);
     }
   }, [dragStatus]);
- 
-    return (
-      <div
-        ref={divNode}
-        onMouseDown={(e) => {
+
+  return (
+    <div
+      ref={divNode}
+      onMouseDown={(e) => {
+        setDrag({
+          ...dragStatus,
+          mouseDown: true,
+          startX: e.clientX - divNode.current.getClientRects()[0].left,
+          startY: e.clientY - divNode.current.getClientRects()[0].top,
+        });
+        // console.log(dragStatus.current);
+      }}
+      onMouseMove={(e) => {
+        if (dragStatus.mouseDown) {
           setDrag({
             ...dragStatus,
-            mouseDown: true,
-            startX: e.clientX - divNode.current.getClientRects()[0].left,
-            startY: e.clientY - divNode.current.getClientRects()[0].top,
+            position: "fixed",
+            draging: true,
+            moveX: e.clientX - dragStatus.startX,
+            moveY: e.clientY - dragStatus.startY,
           });
-          // console.log(dragStatus.current);
-        }}
-        onMouseMove={(e) => {
-          if (dragStatus.mouseDown) {
-            setDrag({
-              ...dragStatus,
-              position: "fixed",
-              draging: true,
-              moveX: e.clientX - dragStatus.startX,
-              moveY: e.clientY - dragStatus.startY,
-            });
-          }
-        }}
-        onMouseUp={(e) => {
-          setDrag({
-            ...dragStatus,
-            draging: false,
-            mouseDown: false,
-            position: "static",
+        }
+      }}
+      onMouseUp={(e) => {
+        setDrag({
+          position: "static",
+          draging: false,
+          mouseDown: false,
+          startX: 0,
+          startY: 0,
+          moveX: 0,
+          moveY: 0,
+        });
+        if (dragStatus.moveX || dragStatus.moveY) {
+          handleClick({
+            x: e.target.getClientRects()[0].left,
+            y: e.target.getClientRects()[0].top,
+            id: e.target.id,
           });
-          handleClick({x:e.target.getClientRects()[0].left,y:e.target.getClientRects()[0].top,id:e.target.id})
-        
-        }}
-      >
-        {children}
-      </div>
-    );
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default WithMouse;
