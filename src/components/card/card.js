@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./card.module.css";
 import Calendar from "../calendar/calendar";
 
+
 const Card = (props) => {
   const {
     title,
@@ -14,10 +15,17 @@ const Card = (props) => {
     content,
     handleClick = (e) => {},
   } = props;
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(props.time);
   const [dis, setDis] = useState(false);
 
-  const timeFormat = (str) => {};
+  const timeFormat = (str) => {
+    let temp = str.split("-");
+    temp[1]= temp[1].length===1?`0${temp[1]}`:temp[1];
+    temp[2]= temp[2].length===1?`0${temp[2]}`:temp[2];
+    
+    return temp.join(".");
+  };
+  //console.log(timeFormat("2020-6-4"))
   if (type === "new") {
     return (
       <div
@@ -33,11 +41,7 @@ const Card = (props) => {
   } else if (type === "list") {
     return (
       <div className={styles.total}>
-        <div
-          id={id}
-          className={styles.list}
-         
-        >
+        <div id={id} className={styles.list}>
           {content}
           <div
             className={styles.edit}
@@ -63,7 +67,12 @@ const Card = (props) => {
         <Calendar
           handleSetTime={(e) => {
             handleClick(e);
-            setTime(e);
+           
+            if(e){
+              
+              new Date(timeFormat(e)) < new Date()? alert("不能选择过去时间"):setTime(timeFormat(e));
+            }
+            
           }}
           display={dis}
         ></Calendar>

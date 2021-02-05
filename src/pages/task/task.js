@@ -10,7 +10,7 @@ function Task(props) {
   // console.log("props.board", props.board);
   const [cardItem, setItem] = useState({});
   const taskNode = useRef(null);
-  const [list, setList] = useState([{ id: "", content: "he", state: "todo" }]);
+  const [list, setList] = useState([{ id: "", content: "he", state: "todo" ,time:"2020.01.12"}]);
 
   /*const todo = list.map((item) => {
     if (item.state === "todo") {
@@ -29,9 +29,16 @@ function Task(props) {
       );
     }
   });*/
+  const timeFormat = (str) => {
+    let temp = str.split("-");
+    temp[1]= temp[1].length===1?`0${temp[1]}`:temp[1];
+    temp[2]= temp[2].length===1?`0${temp[2]}`:temp[2];
+    
+    return temp.join(".");
+  };
   const todo = list.map((item) => {
     if (item.state === "todo") {
-      return <WithMouse handleClick={(e)=>{ console.log("e",e);setItem(e)}}><Card type="list"id={item.id} content={item.content} ></Card></WithMouse>
+      return <WithMouse handleClick={(e)=>{ console.log("e",e);setItem(e)}}><Card type="list"id={item.id} content={item.content} time={item.time} ></Card></WithMouse>
     }
   });
   const done = list.map((item) => {
@@ -93,7 +100,8 @@ function Task(props) {
           handleAdd={(e) => {
             //console.log("dianji");
             let temp = list;
-            temp.push({ id: "hi", content: "", state: "todo" });
+            let time = new Date();
+            temp.push({ id: "hi", content: "", state: "todo" ,time: timeFormat(`${time.getFullYear()}-${time.getMonth()+1}-${time.getDate()}`)});
             // console.log(...temp)
             setList([...temp]);
           }}
