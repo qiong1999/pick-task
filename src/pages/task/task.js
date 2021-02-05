@@ -31,17 +31,17 @@ function Task(props) {
   });*/
   const todo = list.map((item) => {
     if (item.state === "todo") {
-      return <Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log("e",e);setItem(e)}}></Card>
+      return <WithMouse handleClick={(e)=>{ console.log("e",e);setItem(e)}}><Card type="list"id={item.id} content={item.content} ></Card></WithMouse>
     }
   });
   const done = list.map((item) => {
     if (item.state === "done") {
-      return<Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log(e);setItem(e)}}></Card>
+      return<WithMouse handleClick={(e)=>{ console.log("e",e);setItem(e)}}><Card type="list"id={item.id} content={item.content}></Card></WithMouse>
     }
   });
   const undone = list.map((item) => {
     if (item.state === "undone") {
-      return<Card type="list"id={item.id} content={item.content} handleClick={(e)=>{ console.log(e);setItem(e)}}></Card>
+      return<WithMouse handleClick={(e)=>{ console.log("e",e);setItem(e)}}><Card type="list"id={item.id} content={item.content}></Card></WithMouse>
     }
   });
   useEffect(() => {
@@ -101,7 +101,7 @@ function Task(props) {
           {todo}
         </List>
         <List title="done">{done}</List>
-        <List title="undone">{WithMouse(Card)({type:"list",content:"hello",handleClick:(e)=>{console.log("test",e)}})}</List>
+        <List title="undone">{undone}</List>
         
       </div>
     </div>

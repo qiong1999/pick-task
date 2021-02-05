@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,} from "react";
 
-function WithMouse(WrappedComponent) {
+function WithMouse({children,handleClick=()=>{}}) {
   const divNode = useRef(null);
   const [dragStatus, setDrag] = useState({
     position: "static",
@@ -34,9 +34,7 @@ function WithMouse(WrappedComponent) {
       divNode.current.setAttribute("style", style);
     }
   }, [dragStatus]);
-  return (props) => {
-
-    
+ 
     return (
       <div
         ref={divNode}
@@ -67,14 +65,13 @@ function WithMouse(WrappedComponent) {
             mouseDown: false,
             position: "static",
           });
-          props.handleClick({x:e.target.getClientRects()[0].left,y:e.target.getClientRects()[0].top,id:e.target.id})
+          handleClick({x:e.target.getClientRects()[0].left,y:e.target.getClientRects()[0].top,id:e.target.id})
         
         }}
       >
-        <WrappedComponent {...props}></WrappedComponent>
+        {children}
       </div>
     );
-  };
 }
 
 export default WithMouse;
